@@ -74,9 +74,15 @@ function generatePassword() {
 
   for (i = 0; i < numberSelect; i++) {
     var randomNumber = Math.floor(Math.random() * result.length);
-    randString += result.substring(randomNumber, randomNumber +1);
-    console.log(randString);
-  } 
+    randString += result.substring(randomNumber, randomNumber + 1);
+  }
+
+  console.log(randString);
+
+  result = "";
+
+  return randString;
+
 }
 
 // Write password to the #password input
