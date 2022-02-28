@@ -1,10 +1,10 @@
 // Assignment code here
 var result = "";
 // var randomResult = "";
-var pwNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var pwLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var pwUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var pwSpecial = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+var pwNum = "1234567890";
+var pwLowerCase = "abcdefghijklmnopqrstuvwxyz";
+var pwUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var pwSpecial = "!#$%&()*+,-./:;<=>?@][^_`{|}~" + '"' + "'" + "\\";
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -37,6 +37,13 @@ function generatePassword() {
     console.log(result);
   }
 
+  var numSelect = window.confirm("Would you like to include numbers in your new password?");
+
+  if (numSelect) {
+    result = (pwNum + result);
+    console.log(result);
+  }
+
   var specialSelect = window.confirm("Would you like to include special characters in your new password?");
 
   if (specialSelect) {
@@ -44,17 +51,32 @@ function generatePassword() {
     console.log(result);
   }
 
-  parseInt(result);
+  // var randomNumber = Math.floor(Math.random() * result.length)+ 1;
+  // console.log(randomNumber);
 
-  function randomNumber(result) {
-    return Math.floor(Math.random() * result);
-  }
+  // var resultObject = {
+  //   length: Math.ceil(result.length / 2),
+  //   input: result,
+  // }
+
+  console.log(result);
+
+  // function randomInt(limit) {
+  //   return Math.floor(Math.random() * Math.floor(limit));
+  // }
+
+  // function random(result) {
+  //   var index = randomInt(result.length);
+  //   return (result[index]);
+  // }
+
+  var randString = "";
 
   for (i = 0; i < numberSelect; i++) {
-    var randomResult = (randomNumber(result));
-    console.log(randomResult);
-  }
-
+    var randomNumber = Math.floor(Math.random() * result.length);
+    randString += result.substring(randomNumber, randomNumber +1);
+    console.log(randString);
+  } 
 }
 
 // Write password to the #password input
