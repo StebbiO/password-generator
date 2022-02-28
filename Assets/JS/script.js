@@ -1,6 +1,5 @@
 // Assignment code here
 var result = "";
-// var randomResult = "";
 var pwNum = "1234567890";
 var pwLowerCase = "abcdefghijklmnopqrstuvwxyz";
 var pwUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,56 +18,42 @@ function generatePassword() {
   } else if (numberSelect > 128) {
     window.alert("Please select a valid number");
     generatePassword();
+  } else if (isNaN(numberSelect)) {
+    window.alert("Please select a valid number");
+    generatePassword();
   } else {
-    console.log(numberSelect);
+  
   }
 
   var lowerSelect = window.confirm("Would you like to include lowercase letters in your new password?");
 
   if (lowerSelect) {
     result = (pwLowerCase + result);
-    console.log (result);
   }
 
   var upperSelect = window.confirm("Would you like to include uppercase letters in your new password?");
 
   if (upperSelect) {
     result = (pwUpperCase + result);
-    console.log(result);
   }
 
   var numSelect = window.confirm("Would you like to include numbers in your new password?");
 
   if (numSelect) {
     result = (pwNum + result);
-    console.log(result);
   }
 
   var specialSelect = window.confirm("Would you like to include special characters in your new password?");
 
   if (specialSelect) {
     result = (pwSpecial + result);
-    console.log(result);
   }
 
-  // var randomNumber = Math.floor(Math.random() * result.length)+ 1;
-  // console.log(randomNumber);
+  if (!lowerSelect && !upperSelect && !numSelect && !specialSelect) {
+    window.alert("Please select at least one character type!");
+    generatePassword();
+  }
 
-  // var resultObject = {
-  //   length: Math.ceil(result.length / 2),
-  //   input: result,
-  // }
-
-  console.log(result);
-
-  // function randomInt(limit) {
-  //   return Math.floor(Math.random() * Math.floor(limit));
-  // }
-
-  // function random(result) {
-  //   var index = randomInt(result.length);
-  //   return (result[index]);
-  // }
 
   var randString = "";
 
@@ -76,8 +61,6 @@ function generatePassword() {
     var randomNumber = Math.floor(Math.random() * result.length);
     randString += result.substring(randomNumber, randomNumber + 1);
   }
-
-  console.log(randString);
 
   result = "";
 
